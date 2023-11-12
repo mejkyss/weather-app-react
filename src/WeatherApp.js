@@ -37,7 +37,10 @@ export default function WeatherApp() {
           <li>Humidity: {humidity}%</li>
           <li>Wind: {wind} km/h</li>
           <li>
-            <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} />
+            <img
+              src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+              alt="Weather icon"
+            />
           </li>
         </ul>
       );
