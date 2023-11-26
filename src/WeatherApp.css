@@ -1,0 +1,40 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: rgb(235, 181, 95);
+  background: linear-gradient(
+    90deg,
+    rgba(235, 181, 95, 1) 0%,
+    rgba(163, 101, 70, 1) 100%
+  );
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.WeatherApp {
+  border-radius: 25px;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.6);
+  margin: 30px;
+  padding: 25px;
+  /* background-image: linear-gradient(
+      rgba(235, 181, 95, 0.7),
+      rgba(163, 101, 70, 0.7),
+      rgba(17, 79, 86, 0.7)
+    ),
+    url(./img/weather-app-background.png); */
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  max-width: 550px;
+  height: 550px;
+}
+.WeatherApp h1 {
+  color: white;
+  font-size: 30px;
+}
+.WeatherApp .search-field {
+  margin: 10px 0px 10px 0px;
+}
