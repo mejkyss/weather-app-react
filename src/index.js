@@ -8,7 +8,7 @@ import Footer from "./Footer";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <WeatherApp defaultCity="Prague" />
+    <WeatherApp defaultCity="Bergen" />
     {/* Circles */}
     <Footer />
   </React.StrictMode>

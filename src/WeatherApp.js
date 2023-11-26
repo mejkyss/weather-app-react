@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./WeatherApp.css";
-import FormattedDate from "./FormattedDate";
+import SearchField from "./SearchField";
+
+import WeatherInfo from "./WeatherInfo";
 
 export default function WeatherApp(props) {
   const [ready, setReady] = useState(false);
@@ -26,53 +28,8 @@ export default function WeatherApp(props) {
       <div className="WeatherApp">
         <h1>Weather in {weatherData.cityName}</h1>
 
-        {/* Beginning of search field */}
-        <form>
-          <div className="row search-field">
-            <div className="col-9">
-              <input
-                type="search"
-                placeholder="Search for a city"
-                className="form-control"
-              />
-            </div>
-            <div className="col-3">
-              <input
-                type="submit"
-                value="Search"
-                className="button btn btn-primary"
-              />
-            </div>
-          </div>
-        </form>
-        {/* End of search field */}
-
-        <div class="container">
-          <div className="row">
-            <div className="col-6">
-              <ul>
-                <li>
-                  <FormattedDate date={weatherData.date} />
-                </li>
-                <li className="text-capitalize">
-                  {weatherData.weatherDescription}
-                </li>
-                <img
-                  src={`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${weatherData.iconDescription}.png`}
-                  alt={weatherData.iconDescription}
-                />
-                {Math.round(weatherData.temperature)} °C
-              </ul>
-            </div>
-            <div className="col-6">
-              <ul>
-                <li>Feels like: {Math.round(weatherData.feelsLike)} °C</li>
-                <li>Humidity: {weatherData.humidity} %</li>
-                <li>Wind: {Math.round(weatherData.windSpeed)} km/h</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <SearchField />
+        <WeatherInfo weatherData={weatherData} />
       </div>
     );
   } else {
