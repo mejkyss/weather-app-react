@@ -1,5 +1,6 @@
 import React from "react";
 import "./WeatherApp.css";
+import Conversion from "./Conversion";
 
 import FormattedDate from "./FormattedDate";
 
@@ -20,7 +21,7 @@ export default function WeatherInfo(props) {
                 src={`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${props.weatherData.iconDescription}.png`}
                 alt={props.weatherData.iconDescription}
               />
-              {Math.round(props.weatherData.temperature)} °C | °F
+              <Conversion weatherData={props.weatherData} />
             </ul>
           </div>
           <div className="col-6">
