@@ -4,6 +4,7 @@ import "./WeatherApp.css";
 
 import SearchField from "./SearchField";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 
 export default function WeatherApp(props) {
   const [ready, setReady] = useState(false);
@@ -38,6 +39,7 @@ export default function WeatherApp(props) {
 
         <SearchField onSearch={onSearch} />
         <WeatherInfo weatherData={weatherData} />
+        <WeatherForecast />
       </div>
     );
   } else {
