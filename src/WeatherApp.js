@@ -9,6 +9,7 @@ import WeatherForecast from "./WeatherForecast";
 export default function WeatherApp(props) {
   const [ready, setReady] = useState(false);
   const [weatherData, setWeatherData] = useState({});
+  const [forecastData, setForecastData] = useState();
 
   function handleResponse(response) {
     setWeatherData({
@@ -22,14 +23,22 @@ export default function WeatherApp(props) {
       date: new Date(response.data.time * 1000),
       cityName: response.data.city,
     });
+
     setReady(true);
+  }
+
+  function handleForecastResponse(response) {
+    setForecastData(response.data.daily);
+    console.log(response.data);
   }
 
   function onSearch(city) {
     const apiKey = "f3b08f2120e855cotb88e29725334a5b";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
-    axios.get(apiUrl).then(handleResponse);
-    return "Loading...";
+
+    const weatherDataUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+    axios.get(weatherDataUrl).then(handleResponse);
+    const forecastDataUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+    axios.get(forecastDataUrl).then(handleForecastResponse);
   }
 
   if (ready) {
@@ -39,7 +48,8 @@ export default function WeatherApp(props) {
 
         <SearchField onSearch={onSearch} />
         <WeatherInfo weatherData={weatherData} />
-        <WeatherForecast />
+
+        <WeatherForecast forecastData={forecastData} ready={ready} />
       </div>
     );
   } else {

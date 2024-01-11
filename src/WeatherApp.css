@@ -1,3 +1,7 @@
+/****************************************/
+/* Main app styles */
+/****************************************/
+
 body {
   font-family: "Poppins", sans-serif;
   background: rgb(235, 181, 95);
@@ -30,6 +34,7 @@ body {
   width: 100%;
   max-width: 550px;
   height: 550px;
+  position: relative;
 }
 .WeatherApp h1 {
   color: white;
@@ -40,4 +45,21 @@ body {
 }
 .WeatherApp ul {
   list-style: none;
+}
+
+/****************************************/
+/* Forest-in-circles.png image styles */
+/****************************************/
+
+.forest-in-circle {
+  max-width: 120px;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+.watercolour-forest {
+  max-width: 400px;
+  position: absolute;
+  bottom: 0.1%;
 }
