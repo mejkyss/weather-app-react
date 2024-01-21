@@ -10,7 +10,14 @@ export default function Footer() {
       >
         Open-source code
       </a>{" "}
-      by Markéta Dokoupilová
+      by Markéta Dokoupilová, hosted on{" "}
+      <a
+        href="https://gleaming-torrone-74f51e.netlify.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Netlify
+      </a>
     </p>
   );
 }
