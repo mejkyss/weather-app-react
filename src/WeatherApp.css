@@ -45,6 +45,7 @@ body {
 }
 .WeatherApp ul {
   list-style: none;
+  padding: 0;
 }
 
 /****************************************/
@@ -62,4 +63,9 @@ body {
   max-width: 400px;
   position: absolute;
   bottom: 0.1%;
+}
+
+.two-buttons {
+  display: flex;
+  gap: 10px;
 }
