@@ -7,9 +7,9 @@ import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
 
 export default function WeatherApp(props) {
-  const [ready, setReady] = useState(false);
-  const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState();
   const [forecastData, setForecastData] = useState();
+  const [hasFetchedDefaultCity, setHasFetchedDefaultCity] = useState(false);
 
   function handleResponse(response) {
     setWeatherData({
@@ -23,13 +23,10 @@ export default function WeatherApp(props) {
       date: new Date(response.data.time * 1000),
       cityName: response.data.city,
     });
-
-    setReady(true);
   }
 
   function handleForecastResponse(response) {
     setForecastData(response.data.daily);
-    console.log(response.data);
   }
 
   function onSearch(city) {
@@ -41,7 +38,7 @@ export default function WeatherApp(props) {
     axios.get(forecastDataUrl).then(handleForecastResponse);
   }
 
-  if (ready) {
+  if (weatherData) {
     return (
       <div className="WeatherApp">
         <h1>Weather in {weatherData.cityName}</h1>
@@ -49,10 +46,11 @@ export default function WeatherApp(props) {
         <SearchField onSearch={onSearch} />
         <WeatherInfo weatherData={weatherData} />
 
-        <WeatherForecast forecastData={forecastData} ready={ready} />
+        <WeatherForecast forecastData={forecastData} />
       </div>
     );
-  } else {
+  } else if (!hasFetchedDefaultCity) {
     onSearch(props.defaultCity);
+    setHasFetchedDefaultCity(true);
   }
 }
