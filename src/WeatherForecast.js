@@ -1,5 +1,6 @@
 import React from "react";
 import "./WeatherForecast.css";
+import { getTemperature } from "./temperature";
 
 export default function WeatherForecast(props) {
   function getDay(timestamp) {
@@ -31,11 +32,16 @@ export default function WeatherForecast(props) {
                 />{" "}
                 <div className="forecast-temperature">
                   <span className="forecast-temperature-max">
-                    {Math.round(dailyForecast.temperature.maximum)}°C
+                    {getTemperature(
+                      props.tempUnit,
+                      dailyForecast.temperature.maximum
+                    )}
                   </span>
                   <span className="forecast-temperature-min">
-                    {" "}
-                    {Math.round(dailyForecast.temperature.minimum)}°C
+                    {getTemperature(
+                      props.tempUnit,
+                      dailyForecast.temperature.minimum
+                    )}
                   </span>
                 </div>
               </div>

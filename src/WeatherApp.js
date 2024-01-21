@@ -11,6 +11,8 @@ export default function WeatherApp(props) {
   const [forecastData, setForecastData] = useState();
   const [hasFetchedDefaultCity, setHasFetchedDefaultCity] = useState(false);
 
+  const [tempUnit, setTempUnit] = useState("celcius");
+
   function handleResponse(response) {
     setWeatherData({
       temperature: response.data.temperature.current,
@@ -44,9 +46,13 @@ export default function WeatherApp(props) {
         <h1>Weather in {weatherData.cityName}</h1>
 
         <SearchField onSearch={onSearch} />
-        <WeatherInfo weatherData={weatherData} />
+        <WeatherInfo
+          weatherData={weatherData}
+          tempUnit={tempUnit}
+          setTempUnit={setTempUnit}
+        />
 
-        <WeatherForecast forecastData={forecastData} />
+        <WeatherForecast tempUnit={tempUnit} forecastData={forecastData} />
       </div>
     );
   } else if (!hasFetchedDefaultCity) {
